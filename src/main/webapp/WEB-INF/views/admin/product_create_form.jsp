@@ -31,27 +31,38 @@
     <div class="container">
         <div class="form-container">
             <h2 class="text-center text-primary mb-4">Thêm sản phẩm mới</h2>
-            <form:form method="post" action="save" modelAttribute="product">
+            <form:form method="post" action="/webBanHang/save" modelAttribute="product" accept-charset="UTF-8">
+                
+                <!-- Tên sản phẩm -->
                 <div class="mb-3">
-                    <label for="tenSanPham" class="form-label">Tên sản phẩm:</label>
-                    <form:input path="tenSanPham" class="form-control" placeholder='<c:out value="Nhập tên sản phẩm"/>' />
+                    <label class="form-label">Tên sản phẩm:</label>
+                    <form:input path="productName" class="form-control" placeholder="Nhập tên sản phẩm" />
                 </div>
+
+                <!-- Giá sản phẩm -->
                 <div class="mb-3">
-                    <label for="giaSanPham" class="form-label">Giá sản phẩm:</label>
-                    <form:input path="giaSanPham" class="form-control" placeholder='<c:out value="Nhập giá sản phẩm"/>' />
+                    <label class="form-label">Giá sản phẩm:</label>
+                    <form:input path="price" class="form-control" placeholder="Nhập giá sản phẩm" type="number" step="0.01"/>
                 </div>
+
+                <!-- Mô tả -->
                 <div class="mb-3">
-                    <label for="soLuong" class="form-label">Số lượng:</label>
-                    <form:input path="soLuong" class="form-control" placeholder='<c:out value="Nhập số lượng"/>' />
+                    <label class="form-label">Mô tả:</label>
+                    <form:textarea path="description" class="form-control" placeholder="Nhập mô tả sản phẩm" rows="4"></form:textarea>
                 </div>
+
+                <!-- Ảnh sản phẩm -->
                 <div class="mb-3">
-                    <label for="ngaySanXuat" class="form-label">Ngày sản xuất:</label>
-                    <form:input path="ngaySanXuat" type="date" class="form-control" />
+                    <label class="form-label">URL ảnh:</label>
+                    <form:input path="imageUrl" class="form-control" placeholder="Nhập URL ảnh sản phẩm" />
                 </div>
+
+                <!-- Danh mục sản phẩm -->
                 <div class="mb-3">
-                    <label for="moTa" class="form-label">Mô tả:</label>
-                    <form:textarea path="moTa" class="form-control" placeholder='<c:out value="Nhập mô tả sản phẩm"/>' rows="4"></form:textarea>
+                    <label class="form-label">Danh mục sản phẩm:</label>
+                    <form:input path="categoryId" class="form-control" placeholder="Nhập danh mục sản phẩm" />
                 </div>
+
                 <button type="submit" class="btn btn-success">Lưu</button>
             </form:form>
         </div>

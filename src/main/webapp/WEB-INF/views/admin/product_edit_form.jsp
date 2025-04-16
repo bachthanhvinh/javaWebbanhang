@@ -36,41 +36,41 @@
                 <h4>Chỉnh sửa sản phẩm</h4>
             </div>
             <div class="card-body">
-                <form action="/bai1/editsave" method="post">
-                    <input type="hidden" name="idSanPham" value="${product.idSanPham}">
+                <form action="/webBanHang/editsave" method="post">
+                    <input type="hidden" name="productId" value="${product.productId}">
 
                     <div class="mb-3">
-                        <label for="tenSanPham" class="form-label">Tên sản phẩm:</label>
-                        <input type="text" class="form-control" id="tenSanPham" name="tenSanPham" 
-                               value="${product.tenSanPham}" placeholder="Nhập tên sản phẩm" required>
+                        <label for="productName" class="form-label">Tên sản phẩm:</label>
+                        <input type="text" class="form-control" id="productName" name="productName"
+                               value="${product.productName}" placeholder="Nhập tên sản phẩm" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="giaSanPham" class="form-label">Giá sản phẩm:</label>
-                        <input type="number" step="0.01" class="form-control" id="giaSanPham" name="giaSanPham" 
-                               value="${product.giaSanPham}" placeholder="Nhập giá sản phẩm" required>
+                        <label for="description" class="form-label">Mô tả:</label>
+                        <textarea class="form-control" id="description" name="description" rows="4" placeholder="Nhập mô tả sản phẩm">${product.description}</textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label for="soLuong" class="form-label">Số lượng:</label>
-                        <input type="number" class="form-control" id="soLuong" name="soLuong" 
-                               value="${product.soLuong}" placeholder="Nhập số lượng sản phẩm" required>
+                        <label for="price" class="form-label">Giá sản phẩm:</label>
+                        <input type="number" step="0.01" class="form-control" id="price" name="price"
+                               value="${product.price}" placeholder="Nhập giá sản phẩm" required>
                     </div>
+              
 
                     <div class="mb-3">
-                        <label for="ngaySanXuat" class="form-label">Ngày sản xuất:</label>
-                        <input type="date" class="form-control" id="ngaySanXuat" name="ngaySanXuat" 
-                               value="${product.ngaySanXuat}">
+                        <label for="imageUrl" class="form-label">Link hình ảnh:</label>
+                        <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                               value="${product.imageUrl}" placeholder="Nhập URL hình ảnh sản phẩm">
                     </div>
-
-                    <div class="mb-3">
-                        <label for="moTa" class="form-label">Mô tả:</label>
-                        <textarea class="form-control" id="moTa" name="moTa" rows="4" placeholder="Nhập mô tả sản phẩm">${product.moTa}</textarea>
+                     <div class="mb-3">
+                        <label for="categoryId" class="form-label">Danh mục :</label>
+                        <input type="text" class="form-control" id="categoryId" name="categoryId"
+                               value="${product.categoryId}" placeholder="Nhập danh mục sản phẩm">
                     </div>
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Lưu</button>
-                        <a href="/bai1/product_view" class="btn btn-secondary">Hủy</a>
+                        <a href="/webBanHang/product_view" class="btn btn-secondary">Hủy</a>
                     </div>
                 </form>
             </div>
