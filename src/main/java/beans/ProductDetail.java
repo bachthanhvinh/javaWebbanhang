@@ -1,5 +1,5 @@
 package beans;
 
-public class ProductDetail {
+public class productDetail {
 
 }

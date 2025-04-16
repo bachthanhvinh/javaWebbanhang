@@ -12,7 +12,7 @@
     <h2 class="text-center mb-4">DANH SÁCH SẢN PHẨM</h2>
 
     <div class="mb-3">
-        <a href="product_create_form" class="btn btn-primary">Thêm sản phẩm mới</a>
+        <a href="product_create_form" class="btn btn-success">+ Thêm sản phẩm mới</a>
     </div>
 
     <table class="table table-bordered table-hover">
@@ -41,11 +41,14 @@
                     </c:if>
                 </td>
                 <td>${product.categoryId}</td>
-                <td>
-                    <a href="editproduct/${product.productId}" class="btn btn-warning btn-sm">Sửa</a>
+                <td >
+                <div class="d-flex ">
+                   <a href="editproduct/${product.productId}" class="btn btn-warning btn-sm mx-2">Sửa</a>
                     <a href="deleteproduct/${product.productId}" 
                        onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');" 
                        class="btn btn-danger btn-sm">Xóa</a>
+                </div>
+                 
                 </td>
             </tr>
         </c:forEach>

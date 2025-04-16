@@ -80,6 +80,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+
+import javax.servlet.http.HttpServletRequest;
+
 import beans.Product;
 import dao.DaoProduct;
 
@@ -95,12 +99,26 @@ public class HomeController {
         return "admin/dashboard"; // Dẫn đến /WEB-INF/views/admin/admin.jsp
     }
     
+//    @GetMapping("/product_view")
+//    public String viewProducts(Model model) {
+//        List<Product> list = daoProduct.getProducts();
+//        model.addAttribute("list", list);
+//        model.addAttribute("bodyPage", "product/product_view.jsp"); // phần body
+//        String currentPath = Request.getRequestURI(); // Lấy đường dẫn người dùng thực sự gọi
+//        model.addAttribute("currentPath", currentPath); // Truyền xuống JSP
+//        return "admin/dashboard"; // layout chính
+//    }
     @GetMapping("/product_view")
-    public String viewProducts(Model model) {
+    public String viewProducts(HttpServletRequest request, Model model) {
         List<Product> list = daoProduct.getProducts();
         model.addAttribute("list", list);
-        model.addAttribute("bodyPage", "product_view.jsp"); // phần body
-        return "admin/dashboard"; // layout chính
+        model.addAttribute("bodyPage", "product/product_view.jsp");
+
+        // ✅ Lấy đường dẫn hiện tại
+        String currentPath = request.getRequestURI();
+        model.addAttribute("currentPath", currentPath);
+
+        return "admin/dashboard";
     }
 
 
@@ -116,7 +134,7 @@ public class HomeController {
     @GetMapping("/product_create_form")
     public String showForm(Model model) {
         model.addAttribute("product", new Product());
-        return "admin/product_create_form";
+        return "admin/product/product_create_form";
     }
 
     // Lưu sản phẩm mới
@@ -135,7 +153,7 @@ public class HomeController {
     public String edit(@PathVariable int productId, Model model) {
         Product product = daoProduct.getProductById(productId);
         model.addAttribute("product", product);
-        return "admin/product_edit_form";
+        return "admin/product/product_edit_form";
     }
 
     // Lưu chỉnh sửa sản phẩm
@@ -143,7 +161,7 @@ public class HomeController {
     public String editSave(@ModelAttribute("product") Product product, BindingResult result) {
         if (result.hasErrors()) {
             System.out.println("Có lỗi trong dữ liệu sửa sản phẩm: " + result.getAllErrors());
-            return "admin/product_edit_form";
+            return "admin/product/product_edit_form";
         }
         daoProduct.update(product);
         return "redirect:/product_view";
